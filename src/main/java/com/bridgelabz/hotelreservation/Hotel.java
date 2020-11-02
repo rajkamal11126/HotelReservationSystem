@@ -3,10 +3,15 @@ package com.bridgelabz.hotelreservation;
 public class Hotel {
 	private String hotelName;
 	private int rate;
+	private int weekDayRate;
+	private int weekendRate;
+	private int costWeekday;
 
-	public Hotel(String hotelName, int rate) {
+	public Hotel(String hotelName, int rate, int weekDayRate, int weekendRate) {
 		this.hotelName = hotelName;
 		this.rate = rate;
+		this.weekDayRate = weekDayRate;
+		this.weekendRate = weekendRate;
 	}
 
 	public String getHotelName() {
@@ -17,18 +22,27 @@ public class Hotel {
 		this.hotelName = hotelName;
 	}
 
-	public void setCostWeekDay(int currentHotelCost) {
-		
+	public int getWeekendRate() {
+		return weekendRate;
+	}
+
+	public void setWeekendRate(int weekendRate) {
+		this.weekendRate = weekendRate;
+	}
+
+	public int getWeekDayRate() {
+		return weekDayRate;
 	}
 
 	public int getWeekdayRate() {
-		
-		return 0;
+		return weekDayRate;
 	}
 
 	public int getCostWeekday() {
-		
-		return 0;
+		return getCostWeekday();
 	}
 
+	public void setCostWeekDay(int costWeekday) {
+		this.costWeekday = costWeekday;
+	}
 }
