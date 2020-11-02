@@ -5,7 +5,7 @@ public class Hotel {
 	private int rate;
 
 	public Hotel(String hotelName, int rate) {
-		this.setHotelName(hotelName);
+		this.hotelName = hotelName;
 		this.rate = rate;
 	}
 
@@ -16,4 +16,19 @@ public class Hotel {
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
 	}
+
+	public void setCostWeekDay(int currentHotelCost) {
+		
+	}
+
+	public int getWeekdayRate() {
+		
+		return 0;
+	}
+
+	public int getCostWeekday() {
+		
+		return 0;
+	}
+
 }
