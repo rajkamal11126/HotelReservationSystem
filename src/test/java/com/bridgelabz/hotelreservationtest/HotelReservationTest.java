@@ -96,6 +96,13 @@ public class HotelReservationTest {
 	        Result cheapestHotel = hotelReservation.findCheapestHotel(hotelArray , "11Sep2020" , "14Sep2020");
 	        Assert.assertEquals("Lakewood" , cheapestHotel.getHotelName());
 	    }
+	  
+	    @Test
+	    public void givenHotelDetails_WhenAddedForHotel_ShouldReturnEnteredRating() {
+	        HotelReservation hotelReservation = new HotelReservation();
+	        Hotel newHotel = hotelReservation.addHotel("Lakewood", 110 , 90 , 3);
+	        Assert.assertTrue(newHotel.getRating().equals(3));
+	    }
 
 
 }

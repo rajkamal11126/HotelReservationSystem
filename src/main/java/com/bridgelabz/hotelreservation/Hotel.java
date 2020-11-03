@@ -63,4 +63,5 @@ public class Hotel {
 		return totalcost.get();
 	}
 
+
 }

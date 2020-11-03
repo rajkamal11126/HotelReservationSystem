@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Optional;
 
 public class HotelReservation {
-	public Hotel addHotel(String name, int weekday , int weekend) {
+	Hotel addHotel(String name , String type , int weekday , int weekend , int rating) {
         return new Hotel();
     }
     public Result findCheapestHotel(ArrayList<Hotel> hotelArray , String dateS , String dateE) {  //gets total cost for each hotel and returns cheapest hotel
@@ -44,5 +44,6 @@ public class HotelReservation {
         System.out.println(result.getHotelName() + result.getTotalCost());
         return result;
     }
+
 
 }
