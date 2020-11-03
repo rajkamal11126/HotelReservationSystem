@@ -26,7 +26,26 @@ public class HotelReservationTest {
 		hotelArray.add(hotelReservation.addHotel("Bridgewood", 160));
 		hotelArray.add(hotelReservation.addHotel("Ridgewood", 220));
 		Result cheapestHotel = hotelReservation.findCheapestHotel(hotelArray, "10Sep2020", "12Sep2020");
-		Assert.assertEquals(220, cheapestHotel.getTotalCost());
+		Assert.assertEquals(110, cheapestHotel.getTotalCost());
+	}
 
+	@Test
+	public void givenDateRange_WhenAddedForHotel_ShouldReturnCheapestHotelName() throws ParseException {
+		HotelReservation hotelReservation = new HotelReservation();
+		ArrayList<Hotel> hotelArray = new ArrayList<>();
+		hotelArray.add(hotelReservation.addHotel("Lakewood", 110));
+		hotelArray.add(hotelReservation.addHotel("Bridgewood", 60));
+		hotelArray.add(hotelReservation.addHotel("Ridgewood", 150));
+		Result cheapestHotel = hotelReservation.findCheapestHotel(hotelArray, "10Sep2020", "12Sep2020");
+		Assert.assertEquals("Lakewood", cheapestHotel.getHotelName());
+	}
+
+	@Test
+	public void givenHotelDetails_WhenAddedForHotel_ShoulReturnEnteredWeekendRate() {
+		HotelReservation hotelReservation = new HotelReservation();
+		Hotel firstHotel = hotelReservation.addHotel("Lakewood", 110, 90);
+		Hotel secondHotel = hotelReservation.addHotel("Bridgewood", 160, 50);
+		Hotel thirdHotel = hotelReservation.addHotel("Ridgewood",220, 150);
+		Assert.assertTrue(secondHotel.getWeekendRate().equals(50));
 	}
 }

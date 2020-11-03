@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.Optional;
 
 public class HotelReservation {
-	public Hotel addHotel(String name, int rate) {
-		return new Hotel(name, rate);
+	public Hotel addHotel(String name,int weekday ,int weekend) {
+		return new Hotel(name,weekday , weekend);
 	}
 
 	public Result findCheapestHotel(ArrayList<Hotel> hotelArray, String dateStarting, String dateEnding)
@@ -34,13 +34,13 @@ public class HotelReservation {
 		try {
 			dateStart = formatter.parse(dateStarting);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Please enter correct date");
 		}
 		Date dateEnd = new Date();
 		try {
 			dateEnd = formatter.parse(dateEnding);
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Please enter correct date");
 		}
 
 		long difference = dateEnd.getTime() - dateStart.getTime();
@@ -66,6 +66,7 @@ public class HotelReservation {
 		Result result = new Result();
 		result.setHotelName(cheapestHotel.get().getHotelName());
 		result.setTotalCost(cheapestHotel.get().getCostWeekday());
+		System.out.println(result.getHotelName() + result.getTotalCost());
 		return result;
 	}
 

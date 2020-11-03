@@ -1,17 +1,20 @@
 package com.bridgelabz.hotelreservation;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.stream.Stream;
+
 public class Hotel {
 	private String hotelName;
-	private int rate;
 	private int weekDayRate;
 	private int weekendRate;
 	private int costWeekday;
 
-	public Hotel(String hotelName, int rate, int weekDayRate, int weekendRate) {
+	public Hotel(String hotelName, int weekday , int weekend) {
 		this.hotelName = hotelName;
-		this.rate = rate;
-		this.weekDayRate = weekDayRate;
-		this.weekendRate = weekendRate;
+		this.weekDayRate = weekday;
+		this.weekendRate = weekend;
 	}
 
 	public String getHotelName() {
@@ -45,4 +48,8 @@ public class Hotel {
 	public void setCostWeekDay(int costWeekday) {
 		this.costWeekday = costWeekday;
 	}
+	public Integer getTotalRate(LocalDate dateStart , LocalDate dateEnd , long difference) { //calculates total cost for hotel
+        Optional<Integer> totalcost = Stream.iterate(dateStart , date -> date.plusDays(difference)).limit(dateEnd.getDayOfMonth() - dateStart.getDayOfMonth() + 1 ).map(date -> { if(date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY)) return this.getWeekendRate();return this.getWeekdayRate();}).reduce((total , next) -> total+next);
+        return totalcost.get();
+    }
 }
