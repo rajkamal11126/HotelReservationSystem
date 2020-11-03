@@ -2,37 +2,47 @@ package com.bridgelabz.hotelreservation;
 
 public class Hotel {
 	private String hotelName;
-	private String typeOfCustomer;
-	private int weekdayRate;
-	public int costWeekday;
-	public Object weekRate;
+    private String typeOfCustomer;
+    private int weekdayRate;
+    private int weekendRate;
+    public int costWeekday;
 
-	public Hotel() {
+    public Hotel(){
 
-	}
+    }
 
-	public Hotel(String hotelName, int weekdayRate) {
-		this.hotelName = hotelName;
-		this.weekdayRate = weekdayRate;
-	}
+    public Hotel(String hotelName, String typeOfCustomer, int weekdayRate, int weekendRate) {
+        this.hotelName = hotelName;
+        this.typeOfCustomer = typeOfCustomer;
+        this.weekdayRate = weekdayRate;
+        this.weekendRate = weekendRate ;
+    }
 
-	public String getHotelName() {
-		return hotelName;
-	}
+    public String getHotelName() {
+        return hotelName;
+    }
 
-	public String getTypeOfCustomer() {
-		return typeOfCustomer;
-	}
+    public int getWeekendRate() {
+        return weekendRate;
+    }
 
-	public int getWeekdayRate() {
-		return weekdayRate;
-	}
+    public void setWeekendRate(int weekendRate) {
+        this.weekendRate = weekendRate;
+    }
 
-	public int getCostWeekday() {
-		return costWeekday;
-	}
+    public String getTypeOfCustomer() {
+        return typeOfCustomer;
+    }
 
-	public void setCostWeekDay(int costWeekday) {
-		this.costWeekday = costWeekday;
-	}
+    public int getWeekdayRate() {
+        return weekdayRate;
+    }
+
+    public int getCostWeekday() {
+        return  costWeekday;
+    }
+
+    public void setCostWeekDay(int costWeekday) {
+        this.costWeekday = costWeekday;
+    }
 }
