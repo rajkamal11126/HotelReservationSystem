@@ -1,48 +1,66 @@
 package com.bridgelabz.hotelreservation;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.stream.Stream;
+
 public class Hotel {
 	private String hotelName;
-    private String typeOfCustomer;
-    private int weekdayRate;
-    private int weekendRate;
-    public int costWeekday;
+	private int weekdayRate;
+	private int weekendRate;
+	public int costWeekday;
 
-    public Hotel(){
+	public Hotel() {
 
-    }
+	}
 
-    public Hotel(String hotelName, String typeOfCustomer, int weekdayRate, int weekendRate) {
-        this.hotelName = hotelName;
-        this.typeOfCustomer = typeOfCustomer;
-        this.weekdayRate = weekdayRate;
-        this.weekendRate = weekendRate ;
-    }
+	public Hotel(String hotelName, int weekdayRate, int weekendRate) {
+		this.hotelName = hotelName;
+		this.weekdayRate = weekdayRate;
+		this.weekendRate = weekendRate;
+	}
 
-    public String getHotelName() {
-        return hotelName;
-    }
+	public String getHotelName() {
+		return hotelName;
+	}
 
-    public int getWeekendRate() {
-        return weekendRate;
-    }
+	public int getWeekendRate() {
+		return weekendRate;
+	}
 
-    public void setWeekendRate(int weekendRate) {
-        this.weekendRate = weekendRate;
-    }
+	public void setWeekendRate(int weekendRate) {
+		this.weekendRate = weekendRate;
+	}
 
-    public String getTypeOfCustomer() {
-        return typeOfCustomer;
-    }
+	public int getWeekdayRate() {
+		return weekdayRate;
+	}
 
-    public int getWeekdayRate() {
-        return weekdayRate;
-    }
+	public int getCostWeekday() {
+		return costWeekday;
+	}
 
-    public int getCostWeekday() {
-        return  costWeekday;
-    }
+	public void setCostWeekDay(int costWeekday) {
+		this.costWeekday = costWeekday;
+	}
 
-    public void setCostWeekDay(int costWeekday) {
-        this.costWeekday = costWeekday;
-    }
+	public void setTotalCost(Integer cost) {
+
+	}
+
+	public int getTotalCost() {
+		return 0;
+	}
+
+	public Integer getTotalRate(LocalDate dateStart, LocalDate dateEnd, long difference) {
+		Optional<Integer> totalcost = Stream.iterate(dateStart, date -> date.plusDays(difference))
+				.limit(dateEnd.getDayOfMonth() - dateStart.getDayOfMonth() + 1).map(date -> {
+					if (date.getDayOfWeek().equals(DayOfWeek.SATURDAY) || date.getDayOfWeek().equals(DayOfWeek.SUNDAY))
+						return this.getWeekendRate();
+					return this.getWeekdayRate();
+				}).reduce((total, next) -> total + next);
+		return totalcost.get();
+	}
+
 }

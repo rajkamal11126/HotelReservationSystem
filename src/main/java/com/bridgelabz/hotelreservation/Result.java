@@ -8,12 +8,12 @@ public class Result {
 		return hotelName;
 	}
 
-	public int getTotalCost() {
-		return totalCost;
-	}
-
 	public void setHotelName(String hotelName) {
 		this.hotelName = hotelName;
+	}
+
+	public int getTotalCost() {
+		return totalCost;
 	}
 
 	public void setTotalCost(int totalCost) {
