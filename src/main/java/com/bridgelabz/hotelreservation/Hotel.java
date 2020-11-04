@@ -5,52 +5,51 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+
 public class Hotel {
 	private String hotelName;
-	private int weekdayRate;
-	private int weekendRate;
-	public int costWeekday;
+	private String customerType;
+	private Integer weekdayRate;
+	private Integer weekendRate;
+	private Integer rating;
+	public Integer totalCost;
 
-	public Hotel() {
-
-	}
-
-	public Hotel(String hotelName, int weekdayRate, int weekendRate) {
+	public Hotel(String hotelName, String customerType, Integer weekdayRate, Integer weekendRate, Integer rating) {
 		this.hotelName = hotelName;
+		this.customerType = customerType;
 		this.weekdayRate = weekdayRate;
 		this.weekendRate = weekendRate;
+		this.rating = rating;
 	}
 
+	// standard getters method
+	
 	public String getHotelName() {
 		return hotelName;
 	}
 
-	public int getWeekendRate() {
-		return weekendRate;
+	public String getcustomerType() {
+		return customerType;
 	}
 
-	public void setWeekendRate(int weekendRate) {
-		this.weekendRate = weekendRate;
-	}
-
-	public int getWeekdayRate() {
+	public Integer getWeekdayRate() {
 		return weekdayRate;
 	}
 
-	public int getCostWeekday() {
-		return costWeekday;
+	public Integer getWeekendRate() {
+		return weekendRate;
 	}
 
-	public void setCostWeekDay(int costWeekday) {
-		this.costWeekday = costWeekday;
+	public Integer getTotalCost() {
+		return totalCost;
 	}
 
-	public void setTotalCost(Integer cost) {
-
+	public void setTotalCost(Integer totalCost) {
+		this.totalCost = totalCost;
 	}
 
-	public int getTotalCost() {
-		return 0;
+	public Integer getRating() {
+		return rating;
 	}
 
 	public Integer getTotalRate(LocalDate dateStart, LocalDate dateEnd, long difference) {
@@ -62,6 +61,5 @@ public class Hotel {
 				}).reduce((total, next) -> total + next);
 		return totalcost.get();
 	}
-
 
 }
